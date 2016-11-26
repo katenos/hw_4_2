@@ -14,18 +14,11 @@ public class Battle {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        DateHelper d = new DateHelper();
-        Squad ot1 = new Squad("1-й отряд");
-        Squad ot2 = new Squad("2-й отряд");
-        ot1.addWarrior(new Archer());
-        ot1.addWarrior(new Archer());
-        ot1.addWarrior(new Viking());
-        ot1.addWarrior(new Viking());
-        ot2.addWarrior(new Archer());
-        ot2.addWarrior(new Archer());
-        ot2.addWarrior(new Viking());
+    private static Squad ot1, ot2;
+    private static DateHelper d;
 
+    public static void main(String[] args) {
+        prapareForBattle();
         System.out.println("Список бойцов");
         for (int i = 0; i < ot1.getSquad().size(); i++) {
             System.out.println(ot1.getSquad().get(i).toString());
@@ -34,16 +27,28 @@ public class Battle {
         for (int i = 0; i < ot2.getSquad().size(); i++) {
             System.out.println(ot2.getSquad().get(i).toString());
         }
-
-        System.out.println("\nСражение началось!");
-        System.out.println(d.getFormattedStartDate());
-        String nameWinner = battle(ot1, ot2, d);
+        String nameWinner = battle();
         System.out.println("\nПобедил " + nameWinner);
         System.out.println("Общее время поединка " + d.getFormattedDiff());
     }
 
-    public static String battle(Squad ot1, Squad ot2, DateHelper d) {
+    public static void prapareForBattle() {
+        d = new DateHelper();
+        ot1 = new Squad("1-й отряд");
+        ot2 = new Squad("2-й отряд");
+        ot1.addWarrior(new Archer());
+        ot1.addWarrior(new Archer());
+        ot1.addWarrior(new Viking());
+        ot1.addWarrior(new Viking());
+        ot2.addWarrior(new Archer());
+        ot2.addWarrior(new Archer());
+        ot2.addWarrior(new Viking());
+    }
+
+    public static String battle() {
         int i = 0;
+        System.out.println("\nСражение началось!");
+        System.out.println(d.getFormattedStartDate());
         String nameWinner = "";
         while (nameWinner.equals("")) {
             System.out.println("\nРаунд " + (++i));

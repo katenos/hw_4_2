@@ -17,7 +17,6 @@ public class Archer implements Warrior, Cloneable {
     protected int damage;
     protected String squadName;
     protected String warriorName;
-//    private Random rand = new Random();
 
     public Archer() {
         Random rand = new Random();
@@ -55,8 +54,7 @@ public class Archer implements Warrior, Cloneable {
 
     @Override
     public Archer clone() throws CloneNotSupportedException {
-        Archer clone = (Archer) super.clone();
-        return clone;
+        return  (Archer) super.clone();
     }
 
 }

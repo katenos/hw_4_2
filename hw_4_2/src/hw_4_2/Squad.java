@@ -56,9 +56,12 @@ public class Squad implements Cloneable {
 
     @Override
     public Squad clone() throws CloneNotSupportedException {
-        Squad clone = (Squad) super.clone();
-        //тут можно было бы создать новый ArrayList<Warrior> в который я бы добавляла warrior.clone, но у меня не получилось
-        clone.squad = (ArrayList<Warrior>) squad.clone();
+        Squad clone = (Squad) super.clone();        
+        ArrayList<Warrior> arWarrior= new ArrayList<Warrior>();
+        for (int i = 0; i < squad.size(); i++) {
+            arWarrior.add(squad.get(i).clone());            
+        }
+        clone.squad = arWarrior;
         return clone;
     }
 }

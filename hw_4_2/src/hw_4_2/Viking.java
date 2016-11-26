@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author kate_
  */
-public class Viking implements Warrior {
+public class Viking implements Warrior, Cloneable {
 
     protected int health;
     protected int damage;
